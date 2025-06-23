@@ -84,3 +84,26 @@ ax^2 - 2bx + c = a(x - \frac{b}{a})^2 + (c - \frac{b^2}{a})
 $$
 
 TODO: continue
+
+#### 2.6 Variance of a Sum
+
+Show that the variance of a sum is $$\mathbb V [ X + Y ] = \mathbb V[X] + \mathbb V [Y] + 2 \text{Cov}[X, Y]$$
+
+**Solution**: We can start by expressing
+$$
+\mathbb V [X + Y] = \mathbb E[(X+Y)^2] - \mathbb E[X+Y]^2 \\
+= \mathbb E [X^2 + 2XY + Y^2] - (\mathbb E[X]^2 + 2 \mathbb E[X]\mathbb E[Y] + \mathbb E[Y]^2) \\
+= (\mathbb E[X^2] - \mathbb E[X]^2) + 2(\mathbb E[XY] - \mathbb E[X] \mathbb E[Y]) + (\mathbb E[Y^2] - \mathbb E[Y]^2) \\
+= \boxed{\mathbb V [X] + \mathbb V[Y] + 2 \text{Cov}[X, Y]}
+$$
+As desired.
+
+#### 2.9 Bayes' Rule for Medical Diagnosis
+
+After your yearly checkup, the doctor has bad news and good news. The bad news is that you tested positive for a serious disease, and that the test is 99% accurate (i.e., the probability of testing positive given that you have the disease is 0.99, as is the probability of testing negative given that you don't have the disease). The good news is that this is a rare disease, striking only one in 10,000 people. What are the chances that you actually have the disease?
+
+**Solution**: We are given that $P(+ | \text{sick}) = 0.99$ and that $P(- | \text {healthy}) = 0.99$ . We are also given the prior that $P(sick) = 0.0001$. We want to find $P(\text{sick} | +)$. We can use Bayes' rule:
+$$
+P(\text {sick} | +) = \frac{P(+ | \text{sick}) P(\text{sick})}{P(+)} \\ = \frac{P(+ | \text{sick}) P(\text{sick})}{P(+ | \text{sick})P(\text{sick}) + P(+ | \text{healthy})P(\text{healthy})} \\ = \frac{0.99 \cdot 0.0001}{0.99 \cdot 0.0001 + 0.01 \cdot 0.9999} \approx 0.0098
+$$
+So given that we got a positive test with $99\%$  accuracy, we would expect to be sick with probability around $0.0098$.
